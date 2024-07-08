@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 function UserAdd({ onAddUser }) {
   const [formData, setFormData] = useState({
-    userName: '',
-    password: '',
+    userName: 'Marc',
+    password: 'Marc',
     isVendor: true,
   });
 
@@ -26,7 +27,7 @@ function UserAdd({ onAddUser }) {
   const handleSubmit = e => {
     e.preventDefault();
 
-    onAddUser(formData);
+    onAddUser({ ...formData, id: uuidv4() });
   };
   return (
     <div>
